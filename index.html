@@ -82,35 +82,31 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Skinned Motion Retargeting with Residual Perception of Motion Semantics & Geometry</h1>
+            <h1 class="title is-1 publication-title">Learning Anchor Transformations for 3D Garment Animation</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=jUAyNjEAAAAJ&hl=en" target="_blank">Jiaxu Zhang</a><sup>1</sup>,</span>
-                <span class="author-block">
-                  <a href="https://scholar.google.com/citations?user=kujuGQoAAAAJ&hl=en" target="_blank">Junwu Weng</a><sup>2</sup>,</span>
-                  <span class="author-block">
-                    <a href="" target="_blank">Di Kang</a><sup>2</sup>,</span>
+                <a href="https://zhaofang0627.github.io/" target="_blank">Fang Zhao</a><sup>1</sup>,</span>
                     <span class="author-block">
-                      <a href="" target="_blank">Fang Zhao</a><sup>2</sup>,</span>
+                      <a href="" target="_blank">Zekun Li</a><sup>1</sup>,</span>
                       <span class="author-block">
-                        <a href="" target="_blank">Shaoli Huang</a><sup>2</sup>,</span>
+                        <a href="" target="_blank">Shaoli Huang</a><sup>1,*</sup>,</span>
                         <span class="author-block">
-                          <a href="" target="_blank">Xuefei Zhe</a><sup>2</sup>,</span>
+                          <a href="" target="_blank">Junwu Weng</a><sup>1</sup>,</span>
                           <span class="author-block">
-                            <a href="" target="_blank">Linchao Bao</a><sup>2</sup>,</span>
+                            <a href="" target="_blank">Tianfei Zhou</a><sup>2</sup>,</span>
                           <span class="author-block">
-                            <a href="" target="_blank">Ying Shan</a><sup>2</sup>,</span>
+                            <a href="" target="_blank">Guo-Sen Xie</a><sup>3</sup>,</span>
                           <span class="author-block">
-                            <a href="" target="_blank">Jue Wang</a><sup>2</sup>,</span>
+                            <a href="" target="_blank">Jue Wang</a><sup>1</sup>,</span>
                           <span class="author-block">
-                            <a href="" target="_blank">Zhigang Tu</a><sup>1,*</sup>,</span>
+                            <a href="" target="_blank">Ying Shan</a><sup>1</sup>,</span>
                           <span class="author-block">
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block"><sup>1</sup>Wuhan University, <sup>2</sup>Tencent AI Lab<br>CVPR 2023</span>
+                    <span class="author-block"><sup>1</sup>Tencent AI Lab, <sup>2</sup>ETH Zurich, <sup>2</sup>Nanjing University of Science and Technology<br>CVPR 2023</span>
                     <!--<span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>-->
                   </div>
 
@@ -118,7 +114,7 @@
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
-                        <a href="static/pdfs/CVPR_2023_R2ET_camera_ready.pdf" target="_blank"
+                        <a href="static/pdfs/AnchorDEF_cvpr2023.pdf" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -129,7 +125,7 @@
 
                     <!-- Supplementary PDF link -->
                     <span class="link-block">
-                      <a href="static/pdfs/CVPR_2023_R2ET_supply.pdf" target="_blank"
+                      <a href="static/pdfs/AnchorDEF_cvpr2023_suppl.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <i class="fas fa-file-pdf"></i>
@@ -173,11 +169,11 @@
     <div class="hero-body">
       <video poster="" id="tree" autoplay controls muted loop height="100%">
         <!-- Your video here -->
-        <source src="static/videos/DemoVideo.mp4"
+        <source src="static/videos/suppl_video.mp4"
         type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        R2ET</span> is a neural motion retargeting model that can preserve source motion semantics and avoid interpenetration in target motion.
+        AnchorDEF</span> is an anchor-based deformation model which predicts 3D garment animation from a body motion sequence.
       </h2>
     </div>
   </div>
@@ -192,7 +188,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            A good motion retargeting cannot be reached without reasonable consideration of source-target differences on both the skeleton and shape geometry levels. In this work, we propose a novel Residual RETargeting network (R2ET) structure, which relies on two neural modification modules, to adjust the source motions to fit the target skeletons and shapes progressively. In particular, a skeleton-aware module is introduced to preserve the source motion semantics. A shape-aware module is designed to perceive the geometries of target characters to reduce interpenetration and contact-missing. Driven by our explored distance-based losses that explicitly model the motion semantics and geometry, these two modules can learn residual motion modifications on the source motion to generate plausible retargeted motion in a single inference without post-processing. To balance these two modifications, we further present a balancing gate to conduct linear interpolation between them. Extensive experiments on the public dataset Mixamo demonstrate that our R2ET achieves the state-of-the-art performance, and provides a good balance between the preservation of motion semantics as well as the attenuation of interpenetration and contact-missing.
+            This paper proposes an anchor-based deformation model, namely AnchorDEF, to predict 3D garment animation from a body motion sequence. It deforms a garment mesh template by a mixture of rigid transformations with extra nonlinear displacements. A set of anchors around the mesh surface is introduced to guide the learning of rigid transformation matrices. Once the anchor transformations are found, per-vertex nonlinear displacements of the garment template can be regressed in a canonical space, which reduces the complexity of deformation space learning. By explicitly constraining the transformed anchors to satisfy the consistencies of position, normal and direction, the physical meaning of learned anchor transformations in space is guaranteed for better generalization. Furthermore, an adaptive anchor updating is proposed to optimize the anchor position by being aware of local mesh topology for learning representative anchor transformations. Qualitative and quantitative experiments on different types of garments demonstrate that AnchorDEF achieves the state-of-the-art performance on 3D garment deformation prediction in motion, especially for loose-fitting garments.
           </p>
         </div>
       </div>
@@ -222,7 +218,7 @@
 		<table align=center width=850px>
 			<tr>
 				<td>
-					Overview of the proposed network R2ET, which has three decoupled modules, i.e., the skeleton-aware module $\Delta \mathcal{F}_{s}$, the shape-aware module $\Delta \mathcal{F}_{g}$, and the balancing gate $\mathcal{F}_{w}$. The Distance Matrix (DM) and the Distance Field (DF) are two types of distance measurements that guide the network to learn the information of semantics and geometry.
+					Overview of the proposed AnchorDEF. Given a body motion sequence and a garment mesh template, the garment deformation is predicted by a weighted average of rigid anchor transformations with per-vertex displacements in a canonical space. We explicitly constrain the transformed anchors to satisfy the consistencies of position, normal and direction to guarantee the physical meaning of learned anchor transformations in space for better generalization. Starting from the cluster centers of mesh vertices, the anchor position is updated by a local attention map on adjacent mesh vertices with mesh simplification as supervision.
 				</td>
 			</tr>
 		</table>
@@ -247,8 +243,8 @@
 	     <table align=center width=1000px> 
 		<tr>
 			<td><a href="https://arxiv.org/abs/2303.08658"><img class="layered-paper-big" style="height:175px" src="static/images/paper.jpg"/></a></td>
-			<td><span style="font-size:10pt">Jiaxu Zhang, Junwu Weng, Di Kang, Fang Zhao, Shaoli Huang, Xuefei Zhe, Linchao Bao, Ying Shan, Jue Wang and Zhigang Tu*<br>
-				<b>Skinned Motion Retargeting with Residual Perception of Motion Semantics & Geometry</b><br>
+			<td><span style="font-size:10pt">Fang Zhao, Zekun Li, Shaoli Huang*, Junwu Weng, Tianfei Zhou, Guo-Sen Xie, Jue Wang, Ying Shan<br>
+				<b>Learning Anchor Transformations for 3D Garment Animation</b><br>
 				In Conference on Computer Vision and Pattern Recognition (CVPR), 2023.<br>
 				<!--(<a href="https://arxiv.org/pdf/2303.05938.pdf">camera ready</a>)<br>-->
 				<span style="font-size:4pt"><a href=""><br></a>
@@ -270,9 +266,9 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@inproceedings{zhang2023skinned,
-  title = {Skinned Motion Retargeting with Residual Perception of Motion Semantics & Geometry},
-  author = {Jiaxu Zhang, Junwu Weng, Di Kang, Fang Zhao, Shaoli Huang, Xuefei Zhe, Linchao Bao, Ying Shan, Jue Wang, Zhigang Tu.},
+      <pre><code>@inproceedings{zhao2023learning,
+  title = {Learning Anchor Transformations for 3D Garment Animation},
+  author = {Fang Zhao, Zekun Li, Shaoli Huang, Junwu Weng, Tianfei Zhou, Guo-Sen Xie, Jue Wang, Ying Shan.},
   booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
   month     = {June},
   year      = {2023}
